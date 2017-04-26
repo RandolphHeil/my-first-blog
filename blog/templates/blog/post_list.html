@@ -1,19 +1,28 @@
+{% load staticfiles %}
 <html>
     <head>
         <title>Django Girls blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div>
+        <div class="page-header">
             <h1><a href="">Randolph's Python Blog of Fantasic Wonders</a></h1>
         </div>
-
-          {% for post in posts %}
-        <div>
-          <p> published: {{ post.publish_date}}</p>
-          <h1> <a href=""> {{ post.title }}</a></h1>
-          <p>{{ post.text|linebreaksbr }}</p>
+        <div class="content container">
+          <div class="row">
+            <div class="col-md-8">
+                {% for post in posts %}
+              <div class="post">
+                <p class="publish-date"> published: {{ post.publish_date}}</p>
+                <h1> <a href=""> {{ post.title }}</a></h1>
+                <p class="excerpt">{{ post.text|linebreaksbr }}</p>
+              </div>
+                {% endfor %}
+            </div>
+          </div>
         </div>
-          {% endfor %}
-
     </body>
 </html>
